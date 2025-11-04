@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Varun Karthick M — Portfolio</title>
+  <meta name="description" content="Portfolio of Varun Karthick — Software Developer & Machine Learning Intern" />
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0f1724;
+      --glass: rgba(255,255,255,0.06);
+      --accent1: #7c3aed; /* purple */
+      --accent2: #06b6d4; /* teal */
+      --accent3: #f97316; /* orange */
+      --muted: #a8b3c7;
+      --card: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(6,182,212,0.06));
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.08), transparent 6%),
+                  radial-gradient(900px 500px at 90% 90%, rgba(6,182,212,0.06), transparent 6%),
+                  linear-gradient(180deg,#071023 0%, #041428 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+      line-height:1.45;
+    }
+
+    /* container */
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    header.top {
+      display:flex;
+      gap:24px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:28px;
+    }
+    .profile {
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .avatar{
+      width:108px;
+      height:108px;
+      border-radius:18px;
+      overflow:hidden;
+      flex-shrink:0;
+      box-shadow:0 6px 20px rgba(2,6,23,0.6);
+      border:3px solid rgba(255,255,255,0.04);
+      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .title {
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .title h1{
+      margin:0;font-size:20px;font-weight:800;letter-spacing:-0.3px;color:#fff;
+    }
+    .title p { margin:0;color:var(--muted);font-size:13px }
+
+    .cta {
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn {
+      padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:white;
+      box-shadow:0 6px 18px rgba(6,182,212,0.08);
+    }
+    .btn.secondary {
+      background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);font-weight:600;
+    }
+
+    /* hero card */
+    .hero {
+      display:grid;
+      grid-template-columns:1fr 380px;
+      gap:20px;
+      margin-bottom:28px;
+    }
+    .card {
+      background:var(--glass);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .intro {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      padding:22px;border-radius:12px;
+    }
+    .tagline { font-weight:700;color:#fff;font-size:18px;margin-bottom:6px }
+    .summary { color:var(--muted); font-size:14px; margin-bottom:12px }
+
+    .metrics {
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .metric {
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
+      padding:10px 12px;border-radius:10px; min-width:145px;
+    }
+    .metric h3{margin:0;font-size:18px;color:white}
+    .metric p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+    /* right column (contact & skills) */
+    .profile-side {
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .contact-list{display:flex;flex-direction:column;gap:8px}
+    .contact-item{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:14px}
+    .pill {
+      display:inline-block;padding:6px 8px;border-radius:10px;background:var(--card);font-weight:700;font-size:13px;color:#fff;
+    }
+
+    /* sections */
+    section { margin-bottom:22px }
+    .section-head {
+      display:flex;align-items:end;justify-content:space-between;margin-bottom:12px;
+    }
+    .section-head h2{margin:0;font-size:16px;color:#fff}
+    .section-head p{margin:0;color:var(--muted);font-size:13px}
+
+    /* timeline */
+    .timeline{
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .timeline-item{
+      display:flex;gap:12px;align-items:flex-start;
+      padding:12px;border-radius:10px;background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    }
+    .timeline-item .dot{
+      width:12px;height:12px;border-radius:50%;background:var(--accent1);flex-shrink:0;margin-top:6px;
+      box-shadow:0 4px 14px rgba(124,58,237,0.18);
+    }
+    .timeline-item .content h3{margin:0;font-size:14px}
+    .timeline-item .content p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+    /* projects grid */
+    .grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;
+    }
+    .project {
+      padding:14px;border-radius:12px;background: linear-gradient(135deg, rgba(6,182,212,0.03), rgba(249,115,22,0.02));
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .project h4{margin:0 0 6px 0}
+    .project .tools{font-size:13px;color:var(--muted);margin-bottom:8px}
+    .project p{margin:0;color:var(--muted);font-size:13px}
+
+    /* skills */
+    .skills{display:flex;gap:10px;flex-wrap:wrap}
+    .skill {
+      min-width:80px;padding:8px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent2),var(--accent1));
+      color:white;font-weight:700;font-size:13px;box-shadow:0 8px 20px rgba(124,58,237,0.06)
+    }
+
+    .skill-bars{display:grid;gap:10px;margin-top:10px}
+    .bar {
+      background:rgba(255,255,255,0.04);padding:10px;border-radius:10px;
+    }
+    .bar .label{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+    .bar .progress{
+      height:10px;border-radius:8px;margin-top:8px;background:rgba(255,255,255,0.03);overflow:hidden;
+    }
+    .bar .progress > i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,var(--accent1),var(--accent3));}
+
+    /* achievements */
+    .achievements{display:flex;gap:12px;flex-wrap:wrap}
+    .ach-card{
+      flex:1 1 210px;padding:14px;border-radius:12px;background:linear-gradient(90deg, rgba(124,58,237,0.06), rgba(6,182,212,0.04));
+      text-align:center;
+    }
+    .ach-card h3{margin:0;font-size:20px}
+    .ach-card p{margin:6px 0 0;color:var(--muted)}
+
+    /* footer / contact form */
+    .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    input,textarea{
+      background:transparent;border:1px solid rgba(255,255,255,0.05);padding:10px;border-radius:8px;color:#eaf3ff;font-size:14px;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .small{font-size:13px;color:var(--muted)}
+
+    footer {text-align:center;color:var(--muted);padding:14px 0;font-size:13px}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .profile-side{order:3}
+      header.top{flex-direction:column;align-items:flex-start;gap:12px}
+      .contact-form{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- header -->
+    <header class="top">
+      <div class="profile">
+        <div class="avatar" aria-hidden="true">
+          <!-- Replace path if needed: Varun_karthick.jpg -->
+          <img src="Varun_karthick.jpg" alt="Photo of Varun Karthick M">
+        </div>
+        <div class="title">
+          <h1>Varun Karthick M</h1>
+          <p>Software Developer · Machine Learning Intern · Java & Python</p>
+          <div style="display:flex;gap:8px;margin-top:6px">
+            <span class="pill">Tambaram, Tamil Nadu</span>
+            <span class="pill">B.E. ECE (CGPA 7.79)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="VarunKarthickMurugananthanResume.pdf" download>Download Resume</a>
+        <a class="btn secondary" href="mailto:varunkarthickma16@gmail.com">Contact</a>
+      </div>
+    </header>
+
+    <!-- hero -->
+    <div class="hero">
+      <div class="card intro">
+        <div class="tagline">Motivated & detail-oriented Software Developer & Machine Learning Intern</div>
+        <div class="summary">
+          Strong foundation in embedded systems, software development, and data-driven technologies.
+          Skilled in Java, Python, machine learning, and automation. Experienced in building pipelines,
+          automating workflows and delivering measurable improvements to code performance and productivity.
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <h3>Machine Learning Intern</h3>
+            <p>Vcodes — learning and applying ML methodologies (10/2025 - Present)</p>
+          </div>
+          <div class="metric">
+            <h3>Project Intern</h3>
+            <p>L&T Technology Services — Research & prototype (07/2024 - 08/2024)</p>
+          </div>
+          <div class="metric">
+            <h3>Java Intern</h3>
+            <p>Trios Technologies — Automation & debugging (07/2024)</p>
+          </div>
+        </div>
+
+        <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:14px 0">
+
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <div style="flex:1">
+            <strong style="display:block">Top Skills</strong>
+            <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+              <span class="skill">Java</span>
+              <span class="skill">Python</span>
+              <span class="skill">Machine Learning</span>
+              <span class="skill">Arduino</span>
+              <span class="skill">LaTeX</span>
+              <span class="skill">GitHub</span>
+            </div>
+          </div>
+
+          <div style="width:220px">
+            <strong style="display:block">Contact</strong>
+            <div class="small" style="margin-top:8px">
+              <div><strong>Email:</strong> varunkarthickma16@gmail.com</div>
+              <div style="margin-top:6px"><strong>LinkedIn:</strong>
+                <a href="https://www.linkedin.com/in/varun-karthick-m" target="_blank" style="color:var(--accent2)">varun-karthick-m</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- right column -->
+      <aside class="profile-side">
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Quick Facts</h3>
+          <div class="contact-list">
+            <div class="contact-item"><strong>Location:</strong>&nbsp;&nbsp; Tambaram, Tamil Nadu</div>
+            <div class="contact-item"><strong>Availability:</strong>&nbsp;&nbsp; Open to internships and entry-level roles</div>
+            <div class="contact-item"><strong>Languages:</strong>&nbsp;&nbsp; Tamil, English</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Skills & Proficiency</h3>
+          <div class="skill-bars">
+            <div class="bar">
+              <div class="label"><span>Java</span><span>85%</span></div>
+              <div class="progress"><i style="width:85%"></i></div>
+            </div>
+            <div class="bar">
+              <div class="label"><span>Python</span><span>78%</span></div>
+              <div class="progress"><i style="width:78%"></i></div>
+            </div>
+            <div class="bar">
+              <div class="label"><span>Machine Learning</span><span>65%</span></div>
+              <div class="progress"><i style="width:65%"></i></div>
+            </div>
+            <div class="bar">
+              <div class="label"><span>Embedded Systems & Arduino</span><span>72%</span></div>
+              <div class="progress"><i style="width:72%"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Education</h3>
+          <div style="font-size:14px;color:var(--muted)">
+            <strong>KCG College of Technology, Chennai</strong><br>
+            B.E. Electronics & Communication Engineering — CGPA: 7.79<br>
+            <span class="small">08/2021 - 05/2025</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- experience -->
+    <section>
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p>Internships & practical roles</p>
+      </div>
+
+      <div class="timeline card">
+        <div class="timeline-item">
+          <div class="dot" aria-hidden="true"></div>
+          <div class="content">
+            <h3>Machine Learning Intern — Vcodes (10/2025 - Present)</h3>
+            <p>Learning and applying core machine learning methodologies, contributing to projects, and applying training to complete assigned tasks efficiently. Acquired foundational ML knowledge and worked on practical implementations.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="dot" style="background:var(--accent2)"></div>
+          <div class="content">
+            <h3>Project Intern — L&T Technology Services (07/2024 - 08/2024)</h3>
+            <p>Conducted research, compiled concise findings, participated in ideation sessions to devise cost-effective solutions, and prioritized tasks to align with project goals.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="dot" style="background:var(--accent3)"></div>
+          <div class="content">
+            <h3>Java Intern — Trios Technologies Pvt. Ltd (07/2024)</h3>
+            <p>Automated data entry tasks with Java programs and identified & fixed code errors to improve system reliability and maintainability.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- projects -->
+    <section>
+      <div class="section-head">
+        <h2>Selected Projects</h2>
+        <p>Detailed descriptions & tools</p>
+      </div>
+
+      <div class="grid">
+        <div class="project card">
+          <h4>Resume Generation Using LaTeX & Bash Scripting</h4>
+          <div class="tools">Tools: Python • LaTeX • Bash • Excel</div>
+          <p>Designed a pipeline that reads structured Excel data with Python, generates LaTeX resume templates, and compiles them with Bash scripting — automating generation of professional resumes and reducing manual effort.</p>
+        </div>
+
+        <div class="project card">
+          <h4>Design & Fabrication of Low-cost Miniaturized Gas Sensor</h4>
+          <div class="tools">Tools: Arduino • TinkerCAD • Nanocomposites</div>
+          <p>Built a miniaturized gas sensor setup, simulated tests in TinkerCAD, implemented robust hardware design principles, and fabricated the sensor using nanocomposite materials integrated with Arduino for data collection and analysis.</p>
+        </div>
+
+        <div class="project card">
+          <h4>Automation & Debugging Tools (Trios)</h4>
+          <div class="tools">Tools: Java • Git</div>
+          <p>Developed Java programs to automate repetitive data tasks and debugged existing systems to improve performance and reliability in a professional environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- achievements -->
+    <section>
+      <div class="section-head">
+        <h2>Key Achievements</h2>
+        <p>Concrete, measurable improvements</p>
+      </div>
+
+      <div class="achievements">
+        <div class="ach-card card">
+          <h3>30%</h3>
+          <p>Improved software performance through code optimization and error resolution</p>
+        </div>
+        <div class="ach-card card">
+          <h3>40%</h3>
+          <p>Increased productivity by automating 100+ data entry tasks</p>
+        </div>
+        <div class="ach-card card">
+          <h3>5 Projects</h3>
+          <p>Contributed to 5 innovative project solutions through collaborative efforts</p>
+        </div>
+        <div class="ach-card card">
+          <h3>20%</h3>
+          <p>Reduced research time via effective summarization techniques</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- skills & languages -->
+    <section>
+      <div class="section-head">
+        <h2>Skills</h2>
+        <p>Technical & teamwork</p>
+      </div>
+
+      <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <div class="skills">
+            <span class="skill">Java</span>
+            <span class="skill">Python</span>
+            <span class="skill">Machine Learning</span>
+            <span class="skill">Arduino</span>
+            <span class="skill">IoT</span>
+            <span class="skill">Git</span>
+            <span class="skill">LaTeX</span>
+          </div>
+
+          <div style="margin-top:12px" class="small">
+            <strong>Soft Skills:</strong> Team work • Punctual • Problem solving • Research
+          </div>
+        </div>
+
+        <div style="width:260px">
+          <div class="card">
+            <h4 style="margin:0 0 8px 0">Languages</h4>
+            <div class="small">Tamil (Native)</div>
+            <div class="small" style="margin-top:6px">English (Fluent)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- education -->
+    <section>
+      <div class="section-head">
+        <h2>Education</h2>
+        <p>Academic details</p>
+      </div>
+
+      <div class="card">
+        <strong>KCG College of Technology</strong><br>
+        B.E. Electronics & Communication Engineering — CGPA: 7.79<br>
+        <span class="small">08/2021 - 05/2025</span>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section>
+      <div class="section-head">
+        <h2>Get In Touch</h2>
+        <p>Contact me or send a quick message</p>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;gap:18px;flex-wrap:wrap">
+          <div style="flex:1;min-width:260px">
+            <h3 style="margin-top:0">Email</h3>
+            <p class="small">For professional inquiries please email at <a href="mailto:varunkarthickma16@gmail.com" style="color:var(--accent2)">varunkarthickma16@gmail.com</a></p>
+
+            <h3 style="margin-top:12px">LinkedIn</h3>
+            <p class="small"><a href="https://www.linkedin.com/in/varun-karthick-m" target="_blank" style="color:var(--accent2)">https://www.linkedin.com/in/varun-karthick-m</a></p>
+
+            <h3 style="margin-top:12px">Resume</h3>
+            <p class="small">You can download my full resume: <a href="VarunKarthickMurugananthanResume.pdf" download style="color:var(--accent2)">Download PDF</a></p>
+          </div>
+
+          <div style="flex:1;min-width:260px">
+            <h3 style="margin-top:0">Send a message</h3>
+            <!-- This is a static form - if you want a working email submission you must hook it to a server or service -->
+            <form onsubmit="event.preventDefault(); sendMessage();">
+              <div class="contact-form">
+                <div class="field">
+                  <label class="small">Your name</label>
+                  <input id="name" placeholder="Your name" required>
+                </div>
+                <div class="field">
+                  <label class="small">Your email</label>
+                  <input id="email" placeholder="your@mail.com" type="email" required>
+                </div>
+                <div class="field" style="grid-column:1 / -1">
+                  <label class="small">Message</label>
+                  <textarea id="message" placeholder="Write a short message..." required></textarea>
+                </div>
+                <div style="grid-column:1 / -1;display:flex;gap:8px;justify-content:flex-end">
+                  <button class="btn" type="submit">Send</button>
+                  <button type="reset" class="btn secondary">Reset</button>
+                </div>
+              </div>
+            </form>
+
+            <div id="form-result" class="small" style="margin-top:10px;color:var(--muted)"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Built by Varun • Profile photo & resume included • © <span id="year"></span>
+    </footer>
+
+  </div>
+
+  <script>
+    // small scripts
+    document.getElementById('year').innerText = new Date().getFullYear();
+
+    function sendMessage(){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const result = document.getElementById('form-result');
+
+      // This is a client-only demo: we'll open the user's mail client with a prefilled mailto.
+      const subject = encodeURIComponent('Portfolio contact from ' + name);
+      const body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\n\\n' + message);
+      window.location.href = 'mailto:varunkarthickma16@gmail.com?subject=' + subject + '&body=' + body;
+
+      result.innerText = "Opening email client to send your message — or copy the contact email above.";
+    }
+  </script>
+</body>
+</html>
